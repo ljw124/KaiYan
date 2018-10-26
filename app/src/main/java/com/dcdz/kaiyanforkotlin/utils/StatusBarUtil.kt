@@ -16,11 +16,10 @@ import android.view.WindowManager
 import java.util.regex.Pattern
 
 /**
+ * Created by LJW on 2018/10/22.
  * 状态栏透明
  */
-
 class StatusBarUtil {
-
 
     companion object {
         private var DEFAULT_COLOR = 0

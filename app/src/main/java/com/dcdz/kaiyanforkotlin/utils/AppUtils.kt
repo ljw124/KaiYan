@@ -8,8 +8,8 @@ import android.os.Build
 import java.security.MessageDigest
 
 /**
- * Created by xuhao on 2017/12/6.
- * desc: APP 相关的工具类
+ * Created by LJW on 2018/10/22.
+ * APP 相关的工具类
  */
 
 class AppUtils private constructor() {

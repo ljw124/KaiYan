@@ -11,7 +11,7 @@ import java.net.SocketException
 import java.net.URL
 
 /**
- * Created by xuhao on 2017/11/13.
+ * Created by LJW on 2018/10/22.
  */
 class NetworkUtil{
 

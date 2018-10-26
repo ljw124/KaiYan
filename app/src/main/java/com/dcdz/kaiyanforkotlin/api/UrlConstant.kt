@@ -5,4 +5,10 @@ package com.dcdz.kaiyanforkotlin.api
  */
 object UrlConstant{
     const val BASE_URL = "http://baobab.kaiyanapp.com/api/"
+
+    const val BUNDLE_VIDEO_DATA = "video_data"
+    const val BUNDLE_CATEGORY_DATA = "category_data"
+
+    //sp存储文件名
+    const val FILE_WATCH_HISTOR_NAME = "watch_history_file"
 }
