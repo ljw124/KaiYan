@@ -14,7 +14,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        // 实现毛玻璃那种透明的效果需要添加的库
+        // 实现毛玻璃那种透明的效果需要添加的库(realtimeblurview)
         renderscriptTargetApi 19
         renderscriptSupportModeEnabled true    // Enable RS support
 

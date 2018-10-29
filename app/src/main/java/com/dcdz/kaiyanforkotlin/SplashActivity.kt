@@ -55,7 +55,7 @@ class SplashActivity : BaseActivity() {
         EasyPermissions.requestPermissions(this, "应用需要以下权限，请允许", 0, *perms) //* 用于将数组传递给 vararg 参数
     }
 
-    //权限核对之后回调此方法
+    //检查权限之后回调此方法
     override fun onPermissionsGranted(requestCode: Int, perms: List<String>) {
         if (requestCode == 0){
             if (perms.contains(Manifest.permission.READ_PHONE_STATE) && perms.contains(Manifest.permission.WRITE_EXTERNAL_STORAGE)){

@@ -5,4 +5,7 @@
     <string name="no_network">请检查网络后点击重新加载</string>
     <string name="data_error">数据获取失败(ㄒoㄒ)~~</string>
     <string name="empty_view_hint">暂时木有内容呀~~</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
