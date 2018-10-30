@@ -103,7 +103,7 @@ abstract class BaseAdapter<T>(var mContext: Context, var mData: ArrayList<T>, //
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        //用于缓存已找的界面
+        //用于缓存已有找的界面
         private var mView: SparseArray<View>?=null
 
         init {
@@ -120,7 +120,6 @@ abstract class BaseAdapter<T>(var mContext: Context, var mData: ArrayList<T>, //
             }
             return view as T
         }
-
 
         fun <T : ViewGroup> getViewGroup(viewId: Int): T {
             //对已有的view做缓存
