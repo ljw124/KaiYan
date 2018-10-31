@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import org.apache.log4j.Logger
 
 /**
  * Created by LJW on 2018/10/23.
@@ -16,8 +17,10 @@ import android.widget.TextView
  */
 abstract class BaseAdapter<T>(var mContext: Context, var mData: ArrayList<T>, //条目布局
                               private var mLayoutId: Int) : RecyclerView.Adapter<BaseAdapter.ViewHolder>() {
+
     protected var mInflater: LayoutInflater? = null
     private var mTypeSupport: MultipleType<T>? = null
+    internal var log = Logger.getLogger(BaseAdapter::class.java!!)
 
     //使用接口回调点击事件
     private var mItemClickListener: OnItemClickListener? = null

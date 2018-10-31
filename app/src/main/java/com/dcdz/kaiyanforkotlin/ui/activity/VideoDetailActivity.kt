@@ -34,7 +34,6 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View {
         const val TRANSITION = "TRANSITION"
     }
 
-    internal var log = Logger.getLogger(VideoDetailActivity::class.java!!)
     private lateinit var itemData: HomeBean.Issue.Item
     private var orientationUtils: OrientationUtils? = null //处理屏幕旋转的的逻辑
     private var itemList = java.util.ArrayList<HomeBean.Issue.Item>()

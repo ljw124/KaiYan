@@ -6,25 +6,25 @@ import com.dcdz.kaiyanforkotlin.scheduler.SchedulerUtils
 import io.reactivex.Observable
 
 /**
- * Created by LJW on 2018/10/29.
+ * Created by LJW on 2018/10/31.
  */
-class HomeModel {
+class FocusModel {
 
     /**
-     * 获取首页 Banner 数据
+     * 获取关注信息
      */
-    fun loadHomeData(num: Int): Observable<HomeBean> {
+    fun requestFocusInfo(): Observable<HomeBean.Issue> {
 
-        return RetrofitManager.service.getFirstHomeData(num)
+        return RetrofitManager.service.getFocusInfo()
                 .compose(SchedulerUtils.ioToMain())
     }
 
     /**
-     * 加载更多数据
+     * 加载跟多数据
      */
-    fun loadMoreData(url: String): Observable<HomeBean> {
+    fun loadMoreData(url: String): Observable<HomeBean.Issue> {
 
-        return RetrofitManager.service.getMoreHomeData(url)
+        return RetrofitManager.service.getIssueData(url)
                 .compose(SchedulerUtils.ioToMain())
     }
 }

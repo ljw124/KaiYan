@@ -3,20 +3,16 @@ package com.dcdz.kaiyanforkotlin
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v4.app.FragmentTransaction
-import android.view.KeyEvent
 import com.dcdz.kaiyanforkotlin.base.BaseActivity
 import com.dcdz.kaiyanforkotlin.bean.TabEntity
+import com.dcdz.kaiyanforkotlin.ui.fragment.DiscoveryFragment
 import com.dcdz.kaiyanforkotlin.ui.fragment.HomeFragment
-import com.dcdz.kaiyanforkotlin.utils.showToast
 import com.flyco.tablayout.listener.CustomTabEntity
 import com.flyco.tablayout.listener.OnTabSelectListener
 import kotlinx.android.synthetic.main.activity_main.*
-import org.apache.log4j.Logger
 
 class MainActivity : BaseActivity() {
 
-    //internal 修饰符，模块内可见
-    internal var log = Logger.getLogger(MainActivity::class.java!!)
     private val mTitles = arrayOf("每日精选", "发现", "热门", "我的")
     //未被选中的图标
     private val mIconUnSelectIds = intArrayOf(R.mipmap.ic_home_normal, R.mipmap.ic_discovery_normal, R.mipmap.ic_hot_normal, R.mipmap.ic_mine_normal)
@@ -28,7 +24,7 @@ class MainActivity : BaseActivity() {
     private var mIndex = 0 //当前选中的tab
 
     private var mHomeFragment: HomeFragment? = null
-    private var mDiscoveryFragment: HomeFragment? = null
+    private var mDiscoveryFragment: DiscoveryFragment? = null
     private var mHotFragment: HomeFragment? = null
     private var mMineFragment: HomeFragment? = null
 
@@ -88,7 +84,7 @@ class MainActivity : BaseActivity() {
             //发现
             1 -> mDiscoveryFragment?.let {
                 transaction.show(it)
-            } ?: HomeFragment.getInstance(mTitles[position]).let {
+            } ?: DiscoveryFragment.getInstance(mTitles[position]).let {
                 mDiscoveryFragment = it
                 transaction.add(R.id.fl_container, it, "discovery") }
             //热门
@@ -128,19 +124,5 @@ class MainActivity : BaseActivity() {
          if (tab_layout != null){
              outState.putInt("currTabIndex", mIndex)
          }
-    }
-
-    private var mExitTime : Long = 0
-    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        if (keyCode == KeyEvent.KEYCODE_BACK){
-            if (System.currentTimeMillis().minus(mExitTime) <= 2000){
-                finish()
-            } else {
-                mExitTime = System.currentTimeMillis()
-                showToast("再按一次退出应用")
-            }
-            return true
-        }
-        return super.onKeyDown(keyCode, event)
     }
 }

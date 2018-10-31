@@ -71,7 +71,7 @@ interface ApiService {
      * 关注
      */
     @GET("v4/tabs/follow")
-    fun getFollowInfo():Observable<HomeBean.Issue>
+    fun getFocusInfo():Observable<HomeBean.Issue>
 
     /**
     //首页精选
