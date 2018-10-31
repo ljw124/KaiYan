@@ -4,15 +4,12 @@ import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
 import com.classic.common.MultipleStatusView
-import com.dcdz.kaiyanforkotlin.MainActivity
 import com.dcdz.kaiyanforkotlin.MyApplication
-import com.dcdz.kaiyanforkotlin.utils.showToast
 import org.apache.log4j.Logger
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
@@ -133,20 +130,5 @@ abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCal
                     .build()
                     .show()
         }
-    }
-
-    private var mExitTime : Long = 0
-    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        if (keyCode == KeyEvent.KEYCODE_BACK){
-            if (System.currentTimeMillis().minus(mExitTime) <= 2000){
-                finish()
-                log.info("谢谢使用，再见^-^")
-            } else {
-                mExitTime = System.currentTimeMillis()
-                showToast("再按一次退出应用")
-            }
-            return true
-        }
-        return super.onKeyDown(keyCode, event)
     }
 }

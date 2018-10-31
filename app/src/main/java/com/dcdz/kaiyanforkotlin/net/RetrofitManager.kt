@@ -30,7 +30,7 @@ object RetrofitManager {
             //拿到请求头的url进行改造（添加公共参数）
             val modifiedUrl = originalRequest.url().newBuilder()
                     //说明，下面这些参数是从URL中分析出来的
-                    .addQueryParameter("uuid", "d2807c895f0348a180148c9dfa6f2feeac0781b5")
+                    .addQueryParameter("udid", "d2807c895f0348a180148c9dfa6f2feeac0781b5")
                     .addQueryParameter("deviceModel", AppUtils.getMobileModel())
                     .build()
             //构造新的request

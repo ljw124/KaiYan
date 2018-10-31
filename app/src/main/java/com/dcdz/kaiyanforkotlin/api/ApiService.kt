@@ -41,7 +41,7 @@ interface ApiService {
      * 获取分类详情list
      */
     @GET("v4/categories/videoList?")
-    fun getCategoryList(@Query("id")id: Long): Observable<HomeBean.Issue>
+    fun getCategoryDetailList(@Query("id")id: Long): Observable<HomeBean.Issue>
 
     /**
      * 获取更多 Issue

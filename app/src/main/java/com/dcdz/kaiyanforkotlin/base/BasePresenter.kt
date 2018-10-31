@@ -2,11 +2,14 @@ package com.dcdz.kaiyanforkotlin.base
 
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
+import org.apache.log4j.Logger
 
 /**
  * Created by LJW on 2018/10/22.
  */
 open class BasePresenter<T: IBaseView> : IPresenter<T> {
+
+    internal var log = Logger.getLogger(BasePresenter::class.java!!)
 
     var mRootView: T? = null
         private set

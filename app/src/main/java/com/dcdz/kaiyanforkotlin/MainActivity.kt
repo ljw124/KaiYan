@@ -3,10 +3,12 @@ package com.dcdz.kaiyanforkotlin
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v4.app.FragmentTransaction
+import android.view.KeyEvent
 import com.dcdz.kaiyanforkotlin.base.BaseActivity
 import com.dcdz.kaiyanforkotlin.bean.TabEntity
 import com.dcdz.kaiyanforkotlin.ui.fragment.DiscoveryFragment
 import com.dcdz.kaiyanforkotlin.ui.fragment.HomeFragment
+import com.dcdz.kaiyanforkotlin.utils.showToast
 import com.flyco.tablayout.listener.CustomTabEntity
 import com.flyco.tablayout.listener.OnTabSelectListener
 import kotlinx.android.synthetic.main.activity_main.*
@@ -124,5 +126,20 @@ class MainActivity : BaseActivity() {
          if (tab_layout != null){
              outState.putInt("currTabIndex", mIndex)
          }
+    }
+
+    private var mExitTime : Long = 0
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK){
+            if (System.currentTimeMillis().minus(mExitTime) <= 2000){
+                finish()
+                log.info("谢谢使用，再见^-^")
+            } else {
+                mExitTime = System.currentTimeMillis()
+                showToast("再按一次退出应用")
+            }
+            return true
+        }
+        return super.onKeyDown(keyCode, event)
     }
 }
