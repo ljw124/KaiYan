@@ -3,6 +3,7 @@ package com.dcdz.kaiyanforkotlin.ui.activity
 import android.graphics.Color
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.View
 import com.dcdz.kaiyanforkotlin.R
 import com.dcdz.kaiyanforkotlin.api.UrlConstant
 import com.dcdz.kaiyanforkotlin.base.BaseActivity
@@ -12,6 +13,7 @@ import com.dcdz.kaiyanforkotlin.ui.adapter.CategoryDetailAdapter
 import com.dcdz.kaiyanforkotlin.ui.contract.CategoryDetailContract
 import com.dcdz.kaiyanforkotlin.ui.presenter.CategoryDetailPresenter
 import com.dcdz.kaiyanforkotlin.utils.ImageLoaderUtil
+import com.dcdz.kaiyanforkotlin.utils.ShareUtils
 import com.dcdz.kaiyanforkotlin.utils.StatusBarUtil
 import kotlinx.android.synthetic.main.activity_category_detail.*
 
@@ -67,6 +69,13 @@ class CategoryDetailActivity : BaseActivity(), CategoryDetailContract.View {
                     loadingMore = true
                     mPresenter.loadMoreData()
                 }
+            }
+        })
+
+        //设置FloatingActionButton点击后一键分享
+        fab.setOnClickListener(object : View.OnClickListener{
+            override fun onClick(v: View?) {
+                ShareUtils.shareText(this@CategoryDetailActivity, categoryData!!.bgPicture)
             }
         })
 
