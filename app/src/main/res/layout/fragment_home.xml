@@ -66,6 +66,16 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
+                    <ImageView
+                        android:id="@+id/iv_search"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="15dp"
+                        android:transitionName="transition_reveal"
+                        tools:src="@mipmap/ic_action_search_black"
+                        tools:targetApi="lollipop" />
                 </RelativeLayout>
             </android.support.v7.widget.Toolbar>
         </FrameLayout>

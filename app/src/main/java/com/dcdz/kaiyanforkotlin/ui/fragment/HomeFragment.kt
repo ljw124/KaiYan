@@ -1,7 +1,10 @@
 package com.dcdz.kaiyanforkotlin.ui.fragment
 
 
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.support.v4.app.ActivityOptionsCompat
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -9,6 +12,7 @@ import com.dcdz.kaiyanforkotlin.R
 import com.dcdz.kaiyanforkotlin.base.BaseFragment
 import com.dcdz.kaiyanforkotlin.bean.HomeBean
 import com.dcdz.kaiyanforkotlin.net.ErrorStatus
+import com.dcdz.kaiyanforkotlin.ui.activity.SearchActivity
 import com.dcdz.kaiyanforkotlin.ui.adapter.HomeAdapter
 import com.dcdz.kaiyanforkotlin.ui.contract.HomeContract
 import com.dcdz.kaiyanforkotlin.ui.presenter.HomePresenter
@@ -90,6 +94,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
                     //背景设置为透明
                     toolbar.setBackgroundColor(getColor(R.color.color_translucent))
                     tv_header_title.text = ""
+                    iv_search.setImageResource(R.mipmap.ic_action_search_white)
                 } else {
                     if (mHomeAdapter?.mData!!.size > 1) {
                         toolbar.setBackgroundColor(getColor(R.color.color_title_bg))
@@ -104,6 +109,8 @@ class HomeFragment : BaseFragment(), HomeContract.View {
                 }
             }
         })
+
+        iv_search.setOnClickListener { openSearchActivity() }
 
         mLayoutStatusView = multipleStatusView
         //状态栏透明和间距处理
@@ -154,6 +161,15 @@ class HomeFragment : BaseFragment(), HomeContract.View {
 
     override fun dismissLoading() {
         mRefreshLayout?.finishRefresh()
+    }
+
+    private fun openSearchActivity() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val options = activity?.let { ActivityOptionsCompat.makeSceneTransitionAnimation(it, iv_search, iv_search.transitionName) }
+            startActivity(Intent(activity, SearchActivity::class.java), options?.toBundle())
+        } else {
+            startActivity(Intent(activity, SearchActivity::class.java))
+        }
     }
 
     fun getColor(colorId: Int): Int {

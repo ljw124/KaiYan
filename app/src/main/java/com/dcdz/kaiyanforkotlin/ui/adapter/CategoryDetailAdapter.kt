@@ -14,6 +14,7 @@ import com.dcdz.kaiyanforkotlin.bean.HomeBean
 import com.dcdz.kaiyanforkotlin.ui.activity.VideoDetailActivity
 import com.dcdz.kaiyanforkotlin.utils.ImageLoaderUtil
 import com.dcdz.kaiyanforkotlin.utils.durationFormat
+import com.tencent.bugly.proguard.t
 
 /**
  * Created by LJW on 2018/10/31.
@@ -23,6 +24,7 @@ class CategoryDetailAdapter(context: Context, dataList: ArrayList<HomeBean.Issue
     : BaseAdapter<HomeBean.Issue.Item>(context, dataList, layoutId){
 
     fun addData(dataList: ArrayList<HomeBean.Issue.Item>) {
+//        this.mData.clear() //添加这句之后，加载更多会出现闪的情况
         this.mData.addAll(dataList)
         notifyDataSetChanged()
     }
