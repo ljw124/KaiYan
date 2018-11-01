@@ -8,6 +8,8 @@ import com.dcdz.kaiyanforkotlin.base.BaseActivity
 import com.dcdz.kaiyanforkotlin.bean.TabEntity
 import com.dcdz.kaiyanforkotlin.ui.fragment.DiscoveryFragment
 import com.dcdz.kaiyanforkotlin.ui.fragment.HomeFragment
+import com.dcdz.kaiyanforkotlin.ui.fragment.HotFragment
+import com.dcdz.kaiyanforkotlin.ui.fragment.MyFragment
 import com.dcdz.kaiyanforkotlin.utils.showToast
 import com.flyco.tablayout.listener.CustomTabEntity
 import com.flyco.tablayout.listener.OnTabSelectListener
@@ -27,8 +29,8 @@ class MainActivity : BaseActivity() {
 
     private var mHomeFragment: HomeFragment? = null
     private var mDiscoveryFragment: DiscoveryFragment? = null
-    private var mHotFragment: HomeFragment? = null
-    private var mMineFragment: HomeFragment? = null
+    private var mHotFragment: HotFragment? = null
+    private var mMyFragment: MyFragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         if (savedInstanceState != null){
@@ -92,14 +94,14 @@ class MainActivity : BaseActivity() {
             //热门
             2 -> mHotFragment?.let {
                 transaction.show(it)
-            } ?: HomeFragment.getInstance(mTitles[position]).let {
+            } ?: HotFragment.getInstance(mTitles[position]).let {
                 mHotFragment = it
                 transaction.add(R.id.fl_container, it, "hot") }
             //我的
-            3 -> mMineFragment?.let {
+            3 -> mMyFragment?.let {
                 transaction.show(it)
-            } ?: HomeFragment.getInstance(mTitles[position]).let {
-                mMineFragment = it
+            } ?: MyFragment.getInstance(mTitles[position]).let {
+                mMyFragment = it
                 transaction.add(R.id.fl_container, it, "mine") }
         }
 
@@ -115,7 +117,7 @@ class MainActivity : BaseActivity() {
         mHomeFragment?.let { transaction.hide(it) }
         mDiscoveryFragment?.let { transaction.hide(it) }
         mHotFragment?.let { transaction.hide(it) }
-        mMineFragment?.let { transaction.hide(it) }
+        mMyFragment?.let { transaction.hide(it) }
     }
 
     /**
