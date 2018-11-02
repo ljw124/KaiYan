@@ -13,6 +13,7 @@ import com.dcdz.kaiyanforkotlin.ui.fragment.MyFragment
 import com.dcdz.kaiyanforkotlin.utils.showToast
 import com.flyco.tablayout.listener.CustomTabEntity
 import com.flyco.tablayout.listener.OnTabSelectListener
+import com.tencent.bugly.crashreport.CrashReport
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {

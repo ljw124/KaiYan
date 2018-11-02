@@ -20,6 +20,11 @@ android {
 
         //避免65K问题
         multiDexEnabled true
+
+        //选择要添加的对应cpu类型的.so库。配合Bugly使用
+        ndk {
+            abiFilters 'armeabi-v7a', "x86", 'x86_64', 'arm64-v8a'
+        }
     }
     buildTypes {
         release {
@@ -94,4 +99,7 @@ dependencies {
     //运行时权限
     implementation 'pub.devrel:easypermissions:1.2.0'
     implementation 'log4j:log4j:1.2.17'
+    //腾讯Bugly-异常上报
+    implementation 'com.tencent.bugly:crashreport:2.6.6.1'
+    implementation 'com.tencent.bugly:nativecrashreport:3.3.1'
 }

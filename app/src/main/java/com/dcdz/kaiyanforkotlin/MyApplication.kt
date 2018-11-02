@@ -12,6 +12,7 @@ import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
 import com.squareup.leakcanary.RefWatcher
+import com.tencent.bugly.crashreport.CrashReport
 import kotlin.properties.Delegates
 
 /**
@@ -49,6 +50,10 @@ class MyApplication : Application() {
                 log.info("configure log4j ok")
             }
         }.start()
+
+        //初始化腾讯Bugly
+        //参数2：APPID，平台注册时得到; 参数3：是否开启调试模式，调试模式下会输出'CrashReport'tag的日志
+        CrashReport.initCrashReport(applicationContext, "1c706f9e26", false)
     }
 
     /**
