@@ -94,8 +94,6 @@ dependencies {
     //leakCanary
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.1'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.1'
-    //腾讯 bugly
-    implementation 'com.tencent.bugly:crashreport:2.6.6.1'
     //运行时权限
     implementation 'pub.devrel:easypermissions:1.2.0'
     implementation 'log4j:log4j:1.2.17'
