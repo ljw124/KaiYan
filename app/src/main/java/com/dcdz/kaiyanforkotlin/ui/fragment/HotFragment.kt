@@ -42,7 +42,7 @@ class HotFragment : BaseFragment(), HotTabContract.View {
 
     override fun initView() {
         mLayoutStatusView = multipleStatusView
-        //状态栏透明和间距处理
+
         activity?.let { StatusBarUtil.darkMode(it) }
         activity?.let { StatusBarUtil.setPaddingSmart(it, toolbar) }
     }

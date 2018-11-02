@@ -45,7 +45,6 @@ class CategoryDetailAdapter(context: Context, dataList: ArrayList<HomeBean.Issue
 
         // 格式化时长
         val timeFormat = durationFormat(itemData?.duration)
-
         holder.setText(R.id.tv_tag, "#${itemData?.category}/$timeFormat")
 
         holder.setOnItemClickListener(listener = View.OnClickListener {

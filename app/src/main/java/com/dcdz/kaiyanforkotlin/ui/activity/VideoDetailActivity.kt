@@ -29,6 +29,7 @@ import org.apache.log4j.Logger
 
 class VideoDetailActivity : BaseActivity(), VideoDetailContract.View {
 
+    //用于指定过渡动画的协作元素
     companion object {
         const val IMG_TRANSITION = "IMG_TRANSITION"
         const val TRANSITION = "TRANSITION"

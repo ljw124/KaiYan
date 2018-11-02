@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.activity_category_detail.*
  */
 class CategoryDetailActivity : BaseActivity(), CategoryDetailContract.View {
 
-    private var categoryData: CategoryBean? = null
+    private var categoryData: CategoryBean? = null //启动此Activity时携带过来的数据
     private var itemList = ArrayList<HomeBean.Issue.Item>()
     private val mPresenter by lazy { CategoryDetailPresenter() }
     private val mAdapter by lazy { CategoryDetailAdapter(this, itemList, R.layout.item_category_detail) }
@@ -40,6 +40,7 @@ class CategoryDetailActivity : BaseActivity(), CategoryDetailContract.View {
     }
 
     override fun initView() {
+        //自定义ActionBar
         setSupportActionBar(toolbar)
         //给ActionBar的左边加上一个返回的图标
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

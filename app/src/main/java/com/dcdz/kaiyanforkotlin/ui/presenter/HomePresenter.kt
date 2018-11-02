@@ -23,7 +23,7 @@ class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter
         mRootView?.showLoading()
         val disposable = homeModel.loadHomeData(num)
                 .flatMap({ homeBean ->
-                    //过滤掉 Banner2(包含广告,等不需要的 Type)
+                    //过滤掉 Banner2(包含广告等不需要的 Type)
                     val bannerItemList = homeBean.issueList[0].itemList
                     bannerItemList.filter { item ->
                         item.type == "banner2" || item.type == "horizontalScrollCard"

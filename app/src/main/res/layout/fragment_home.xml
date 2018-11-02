@@ -45,6 +45,7 @@
                     android:paddingBottom="51dp" />
             </com.classic.common.MultipleStatusView>
 
+            <!--app:contentInsetStart="0dp" 为了解决Toolbar左侧有空白-->
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"

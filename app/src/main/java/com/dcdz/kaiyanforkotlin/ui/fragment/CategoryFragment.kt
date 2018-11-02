@@ -36,12 +36,17 @@ class CategoryFragment: BaseFragment(), CategoryContract.View {
             return fragment
         }
     }
+
+    init {
+        //绑定View
+        mPresenter.attachView(this)
+    }
+
     override fun getLayoutId(): Int = R.layout.fragment_category
 
     @Suppress("DEPRECATION")
     override fun initView() {
-        //绑定View
-        mPresenter.attachView(this)
+        //设置多布局
         mLayoutStatusView = multipleStatusView
 
         mRecyclerView.layoutManager = GridLayoutManager(activity, 2)
@@ -58,6 +63,9 @@ class CategoryFragment: BaseFragment(), CategoryContract.View {
         })
     }
 
+    /**
+     * 初始化数据
+     */
     override fun lazyLoad() {
         mPresenter.loadCategoryData()
     }

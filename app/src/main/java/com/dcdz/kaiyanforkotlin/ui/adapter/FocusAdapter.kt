@@ -16,6 +16,7 @@ import com.dcdz.kaiyanforkotlin.utils.ImageLoaderUtil
  */
 class FocusAdapter(context: Context, dataList: ArrayList<HomeBean.Issue.Item>)
     : BaseAdapter<HomeBean.Issue.Item>(context, dataList, object: MultipleType<HomeBean.Issue.Item>{
+
     override fun getLayoutId(item: HomeBean.Issue.Item, position: Int): Int {
         return when{
             item.type == "videoCollectionWithBrief" ->

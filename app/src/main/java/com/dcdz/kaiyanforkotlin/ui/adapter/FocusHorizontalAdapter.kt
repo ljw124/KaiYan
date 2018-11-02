@@ -69,8 +69,7 @@ class FocusHorizontalAdapter(context: Context, categoryList: ArrayList<HomeBean.
         intent.putExtra(VideoDetailActivity.Companion.TRANSITION, true)
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             val pair = Pair<View, String>(view, VideoDetailActivity.IMG_TRANSITION)
-            val activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    activity, pair)
+            val activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, pair)
             ActivityCompat.startActivity(activity, intent, activityOptions.toBundle())
         } else {
             activity.startActivity(intent)

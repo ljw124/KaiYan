@@ -55,9 +55,11 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     override fun getLayoutId(): Int = R.layout.fragment_home
 
     override fun initView() {
+        //绑定view， presenter中的mRootView便是此view
         mPresenter.attachView(this)
         //内容跟随偏移
         mRefreshLayout.setEnableHeaderTranslationContent(true)
+        //刷新数据
         mRefreshLayout.setOnRefreshListener {
             isRefresh = true
             mPresenter.loadHomeData(num)
@@ -69,7 +71,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         //设置下拉刷新主题颜色
         mRefreshLayout.setPrimaryColorsId(R.color.color_light_black, R.color.color_title_bg)
 
-        //RecyclerView设置滑动监听
+        //RecyclerView设置滑动监听(注意：布局中禁止了RefreshLayout的加载更多，是为了处理滑动过程中Toolbar的显隐)
         mRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener(){
             override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
@@ -89,8 +91,9 @@ class HomeFragment : BaseFragment(), HomeContract.View {
 
             override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
+                //第一个可见view的位置
                 val currentVisibleItemPosition = linearLayoutManager.findFirstVisibleItemPosition()
-                if (currentVisibleItemPosition == 0) {
+                if (currentVisibleItemPosition == 0) { //滑动到了第一个元素，Toolbar设置透明
                     //背景设置为透明
                     toolbar.setBackgroundColor(getColor(R.color.color_translucent))
                     tv_header_title.text = ""
@@ -100,7 +103,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
                         toolbar.setBackgroundColor(getColor(R.color.color_title_bg))
                         val itemList = mHomeAdapter!!.mData
                         val item = itemList[currentVisibleItemPosition + mHomeAdapter!!.bannerItemSize - 1]
-                        if (item.type == "textHeader") {
+                        if (item.type == "textHeader") { //判断是否日期 如：-Oct.28,Brunch-
                             tv_header_title.text = item.data?.text
                         } else {
                             tv_header_title.text = simpleDateFormat.format(item.data?.date)
@@ -110,19 +113,27 @@ class HomeFragment : BaseFragment(), HomeContract.View {
             }
         })
 
+        //搜索按钮设置监听
         iv_search.setOnClickListener { openSearchActivity() }
 
+        //设置多布局
         mLayoutStatusView = multipleStatusView
+
         //状态栏透明和间距处理
         activity?.let { StatusBarUtil.darkMode(it) }
         activity?.let { StatusBarUtil.setPaddingSmart(it, toolbar) }
     }
 
+    /**
+     * 初始化数据
+     */
     override fun lazyLoad() {
         mPresenter.loadHomeData(num)
     }
 
-    //获取首页数据后的回调
+    /**
+     * 获取到首页数据后的回调
+     */
     override fun setHomeData(homeBean: HomeBean) {
         mLayoutStatusView?.showContent()
         //给adapter设置数据
@@ -134,10 +145,12 @@ class HomeFragment : BaseFragment(), HomeContract.View {
 
         mRecyclerView.adapter = mHomeAdapter
         mRecyclerView.layoutManager = linearLayoutManager
-        mRecyclerView.itemAnimator = DefaultItemAnimator()
+        mRecyclerView.itemAnimator = DefaultItemAnimator() //默认动画
     }
 
-    //加载更多后的回调
+    /**
+     * 加载更多后的回调
+     */
     override fun setMoreData(itemList: ArrayList<HomeBean.Issue.Item>) {
         loadingMore = false
         mHomeAdapter?.addItemData(itemList)
@@ -164,7 +177,9 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     }
 
     private fun openSearchActivity() {
+        //如果SDK版本不小于21，使用过渡动画
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            //场景动画(第三个参数指定哪两个view进行协作)  https://blog.csdn.net/qibin0506/article/details/48129139
             val options = activity?.let { ActivityOptionsCompat.makeSceneTransitionAnimation(it, iv_search, iv_search.transitionName) }
             startActivity(Intent(activity, SearchActivity::class.java), options?.toBundle())
         } else {

@@ -23,8 +23,8 @@ import java.net.URLConnection
 class CategoryAdapter(context: Context, categoryList: ArrayList<CategoryBean>, layoutId: Int) :
     BaseAdapter<CategoryBean>(context, categoryList, layoutId){
 
+    //设置字体
     private var textTypeface: Typeface?=null
-
     init {
         textTypeface = Typeface.createFromAsset(MyApplication.context.assets, "fonts/FZLanTingHeiS-DB1-GB-Regular.TTF")
     }
@@ -52,7 +52,7 @@ class CategoryAdapter(context: Context, categoryList: ArrayList<CategoryBean>, l
         //设置条目点击事件
         holder.setOnItemClickListener(object : View.OnClickListener{
             override fun onClick(v: View?) {
-                val intent = Intent(mContext as Activity,CategoryDetailActivity::class.java)
+                val intent = Intent(mContext as Activity, CategoryDetailActivity::class.java)
                 intent.putExtra(UrlConstant.BUNDLE_CATEGORY_DATA,data)
                 mContext.startActivity(intent)
             }

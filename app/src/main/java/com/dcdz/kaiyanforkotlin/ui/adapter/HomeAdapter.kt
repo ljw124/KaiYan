@@ -66,18 +66,11 @@ class HomeAdapter(context: Context, data: ArrayList<HomeBean.Issue.Item>): BaseA
      */
     override fun getItemCount(): Int {
         return when {
+            //为啥要 +1？ 因为数据是以日期为模块的，每个模块的第一个元素我textHeader（即日期）
             mData.size > bannerItemSize -> mData.size - bannerItemSize + 1
             mData.isEmpty() -> 0
             else -> 1
         }
-    }
-
-    /**
-     * 加载布局
-     */
-    private fun inflaterView(mLayoutId: Int, parent: ViewGroup): View{
-        val view = mInflater?.inflate(mLayoutId, parent, false)
-        return view ?: View(parent.context)
     }
 
     /**
@@ -92,6 +85,14 @@ class HomeAdapter(context: Context, data: ArrayList<HomeBean.Issue.Item>): BaseA
             else ->
                 ViewHolder(inflaterView(R.layout.item_home_content, parent))
         }
+    }
+
+    /**
+     * 加载布局
+     */
+    private fun inflaterView(mLayoutId: Int, parent: ViewGroup): View{
+        val view = mInflater?.inflate(mLayoutId, parent, false)
+        return view ?: View(parent.context)
     }
 
     /**
@@ -168,7 +169,7 @@ class HomeAdapter(context: Context, data: ArrayList<HomeBean.Issue.Item>): BaseA
         itemData?.tags?.take(4)?.forEach {
             tagText += (it.name + "/")
         }
-        // 格式化时间
+        // 格式化时长
         val timeFormat = durationFormat(itemData?.duration)
 
         tagText += timeFormat
