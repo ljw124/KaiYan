@@ -25,7 +25,6 @@ import com.dcdz.kaiyanforkotlin.ui.presenter.SearchPresenter
 import com.dcdz.kaiyanforkotlin.utils.StatusBarUtil
 import com.dcdz.kaiyanforkotlin.utils.showToast
 import com.dcdz.kaiyanforkotlin.view.ViewAnimUtils
-import com.dcdz.kaiyanforkotlin.view.ViewAnimUtils.animateRevealShow
 import com.google.android.flexbox.*
 import kotlinx.android.synthetic.main.activity_search.*
 

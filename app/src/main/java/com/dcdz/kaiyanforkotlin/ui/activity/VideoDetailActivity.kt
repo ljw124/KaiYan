@@ -25,7 +25,6 @@ import com.shuyu.gsyvideoplayer.utils.OrientationUtils
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
 import com.shuyu.gsyvideoplayer.video.base.GSYVideoPlayer
 import kotlinx.android.synthetic.main.activity_video_detail.*
-import org.apache.log4j.Logger
 
 class VideoDetailActivity : BaseActivity(), VideoDetailContract.View {
 

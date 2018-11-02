@@ -14,7 +14,6 @@ import com.dcdz.kaiyanforkotlin.bean.HomeBean
 import com.dcdz.kaiyanforkotlin.ui.activity.VideoDetailActivity
 import com.dcdz.kaiyanforkotlin.utils.ImageLoaderUtil
 import com.dcdz.kaiyanforkotlin.utils.durationFormat
-import com.tencent.bugly.proguard.t
 
 /**
  * Created by LJW on 2018/10/31.

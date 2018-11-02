@@ -23,11 +23,4 @@ object ErrorStatus {
      */
     @JvmField
     val NETWORK_ERROR = 1004
-
-    /**
-     * API解析异常（或者第三方数据结构更改）等其他异常
-     */
-    @JvmField
-    val API_ERROR = 1005
-
 }

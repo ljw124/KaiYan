@@ -14,8 +14,6 @@ import com.dcdz.kaiyanforkotlin.base.BaseAdapter
 import com.dcdz.kaiyanforkotlin.bean.CategoryBean
 import com.dcdz.kaiyanforkotlin.ui.activity.CategoryDetailActivity
 import com.dcdz.kaiyanforkotlin.utils.ImageLoaderUtil
-import com.tencent.bugly.proguard.u
-import java.net.URLConnection
 
 /**
  * Created by LJW on 2018/10/31.
